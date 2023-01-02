@@ -1,34 +1,3 @@
-version: "{build}"
-skip_tags: true
-environment:
-  matrix:
-    - PYTHON_EXE: "C:\\Python26\\python.exe"
-    - PYTHON_EXE: "C:\\Python26-x64\\python.exe"
-    - PYTHON_EXE: "C:\\Python26-x64\\python.exe"
-      OSCRYPTO_USE_WINLEGACY: "true"
-    - PYTHON_EXE: "C:\\Python33\\python.exe"
-    - PYTHON_EXE: "C:\\Python33\\python.exe"
-      OSCRYPTO_USE_WINLEGACY: "true"
-    - PYTHON_EXE: "C:\\Python33-x64\\python.exe"
-    - PYTHON_EXE: "C:\\pypy2-v5.10.0-win32\\pypy.exe"
-    - PYTHON_EXE: "C:\\pypy2-v5.10.0-win32\\pypy.exe"
-      OSCRYPTO_USE_WINLEGACY: "true"
-install:
-  - ps: |-
-      $env:PYTMP = "${env:TMP}\py";
-      if (!(Test-Path "$env:PYTMP")) {
-        New-Item -ItemType directory -Path "$env:PYTMP" | Out-Null;
-      }
-      if ("${env:PYTHON_EXE}" -eq "C:\pypy2-v5.10.0-win32\pypy.exe") {
-        if (!(Test-Path "${env:PYTMP}\pypy2-v5.10.0-win32.zip")) {
-          (New-Object Net.WebClient).DownloadFile('https://bitbucket.org/pypy/pypy/downloads/pypy2-v5.10.0-win32.zip', "${env:PYTMP}\pypy2-v5.10.0-win32.zip");
-        }
-        7z x -y "${env:PYTMP}\pypy2-v5.10.0-win32.zip" -oC:\ | Out-Null;
-        & ${env:PYTHON_EXE} -m ensurepip --upgrade;
-      }
-cache:
-  - '%TMP%\py\'
-build: off
-test_script:
-  - cmd: "%PYTHON_EXE% run.py deps"
-  - cmd: "%PYTHON_EXE% run.py ci"
+version https://git-lfs.github.com/spec/v1
+oid sha256:7002b65605648a7c0dfb1976af46b57b591c3958dec6872390bd0303728587d6
+size 1288

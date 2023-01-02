@@ -1,9 +1,3 @@
-# asn1crypto_tests
-
-Run the test suite via:
-
-```bash
-python -m asn1crypto_tests
-```
-
-Full documentation a <https://github.com/wbond/asn1crypto#readme>.
+version https://git-lfs.github.com/spec/v1
+oid sha256:bc63334743172e2dafb22e0ccfd9a4920c011c2920c2380cdbc60fca7fcdc2c0
+size 152
